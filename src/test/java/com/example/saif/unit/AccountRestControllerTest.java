@@ -1,5 +1,7 @@
 package com.example.saif.unit;
 
+import static org.mockito.BDDMockito.given;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.example.saif.controllers.AccountRestController;
 import com.example.saif.models.Account;
 import com.example.saif.services.AccountService;
-
-import static org.mockito.BDDMockito.given;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(AccountRestController.class)
@@ -49,7 +49,7 @@ class AccountRestControllerTest {
         mvc.perform(MockMvcRequestBuilders.post("/api/v1/accounts")
                 .content("{\"sortCode\": \"53-68-92\",\"accountNumber\": \"78901234\"}")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNoContent());
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
@@ -60,7 +60,7 @@ class AccountRestControllerTest {
         mvc.perform(MockMvcRequestBuilders.post("/api/v1/accounts")
                 .content("{\"sortCode\": \"53-68-92\",\"accountNumber\": \"78901234\"}")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNoContent())
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 }

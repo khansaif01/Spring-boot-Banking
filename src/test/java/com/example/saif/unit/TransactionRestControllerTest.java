@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.example.saif.controllers.TransactionRestController;
+import com.example.saif.services.AccountService;
 import com.example.saif.services.TransactionService;
 
 @ExtendWith(SpringExtension.class)
@@ -20,6 +21,9 @@ class TransactionRestControllerTest {
 
     @Autowired
     private MockMvc mvc;
+    
+    @MockBean
+    private AccountService accountService;
 
     @MockBean
     private TransactionService transactionService;
